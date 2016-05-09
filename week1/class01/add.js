@@ -1,27 +1,16 @@
+var assert = require( 'assert' );
 
-function add( x, y ) {
+function add( x = 0, y = 0 ) {
 	return x + y;
 }
 
-
-function assert( name, passed ) {
+describe( 'adding', () => {
 	
-	if ( passed ) {
-		console.log( name, 'passed!' );
-	}
-	else {
-		console.log( name, 'failed!' );//, actual, 'did not equal', expected );
-	}
-	
-}
+	it( 'adds simple numbers', () => {
+		assert.equal( add( 1, 2 ), 3 );
+	});
 
-
-var expected = 3;
-var actual = add( 1, 2 );
-
-assert( 'adds simple numbers', actual === expected );
-
-expected = 2;
-actual = add( 2 );
-
-assert( 'treats missing values as 0', actual === expected );
+	it( 'treats missing values as 0', () => {
+		assert.equal( add( 2 ), 2 );
+	});
+});
