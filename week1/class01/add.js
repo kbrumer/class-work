@@ -4,14 +4,13 @@ function add( x, y ) {
 }
 
 
-function testIt( actual, expected ) {
-	var passed = expected === actual;
+function assert( name, passed ) {
 	
 	if ( passed ) {
-		console.log( 'passed!' );
+		console.log( name, 'passed!' );
 	}
 	else {
-		console.log( 'failed:', actual, 'did not equal', expected );
+		console.log( name, 'failed!' );//, actual, 'did not equal', expected );
 	}
 	
 }
@@ -20,9 +19,9 @@ function testIt( actual, expected ) {
 var expected = 3;
 var actual = add( 1, 2 );
 
-testIt( actual, expected );
+assert( 'adds simple numbers', actual === expected );
 
 expected = 2;
 actual = add( 2 );
 
-testIt( actual, expected );
+assert( 'treats missing values as 0', actual === expected );
