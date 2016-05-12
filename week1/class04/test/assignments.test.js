@@ -1,12 +1,12 @@
-const assert = require( 'assert' );
-const EventEmitter = require('events');
+var assert = require( 'assert' );
+var Assignments = require( '../Assignments' );
 
-describe( 'EventEmitter', () => {
+describe( 'assignments', () => {
 	
 	var assignments;
 	
 	beforeEach( () => {
-		assignments = new EventEmitter();
+		assignments = new Assignments();
 	});
 		
 	it( 'fires correct event', () => {

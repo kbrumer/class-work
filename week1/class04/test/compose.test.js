@@ -1,12 +1,12 @@
 const assert = require( 'assert' );
-const EventEmitter = require('events');
+const Assignment = require('../AssignmentsComposed');
 
-describe( 'EventEmitter', () => {
+describe( 'Assignments Composed', () => {
 	
 	var assignments;
 	
 	beforeEach( () => {
-		assignments = new EventEmitter();
+		assignments = new Assignment();
 	});
 		
 	it( 'fires correct event', () => {
@@ -17,7 +17,7 @@ describe( 'EventEmitter', () => {
 			fired = true;
 		});	
 		
-		assignments.emit( 'submit', 'martypdx' );
+		assignments.submit( 'martypdx' );
 		
 		assert.ok( fired );
 	});
@@ -26,7 +26,7 @@ describe( 'EventEmitter', () => {
 		assignments.on( 'submit', student => {
 			assert( false );
 		});	
-		assignments.emit( 'graduate', 'martypdx' );
+		assignments.graduate( 'martypdx' );
 	});
 
 	it( 'only fires correctly named event', () => {
@@ -41,8 +41,8 @@ describe( 'EventEmitter', () => {
 			submitFired = true;
 		});	
 		
-		assignments.emit( 'graduate', 'martypdx' );
-		assignments.emit( 'submit', 'martypdx' );
+		assignments.graduate( 'martypdx' );
+		assignments.submit( 'martypdx' );
 		
 		assert.ok( submitFired, 'submit' );
 		assert.ok( graduateFired, 'graduate' );
@@ -61,7 +61,7 @@ describe( 'EventEmitter', () => {
 			count++;
 		});	
 		
-		assignments.emit( 'submit', 'martypdx' );
+		assignments.submit( 'martypdx' );
 		
 		assert.equal( count, 2 );
 	});
