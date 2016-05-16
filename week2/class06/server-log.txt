@@ -1,0 +1,60 @@
+socket1: hello
+
+socket2: Hi
+
+socket1: try two
+
+socket2: yeah
+
+socket1: file plus stout
+
+socket2: w00t!
+
+socket2: :troll:
+
+socket2: ����
+socket2: 
+
+socket3: GET / HTTP/1.1
+Host: localhost:65000
+Connection: keep-alive
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36
+DNT: 1
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: en-US,en;q=0.8
+
+
+socket2: [32mHi.[0m
+
+socket5: GET / HTTP/1.1
+Host: localhost:65000
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36
+DNT: 1
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: en-US,en;q=0.8
+
+
+socket2: hi
+
+socket7: GET / HTTP/1.1
+Host: localhost:65000
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36
+DNT: 1
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: en-US,en;q=0.8
+
+
+socket2: sadfasdf
+
