@@ -22,12 +22,9 @@
 	* [week 2 canvas module](https://canvas.instructure.com/courses/1022347/modules)
 * Next Week: Middleware (Express.js) and Data (MongoDB)
 
-## Today: Intro to Node Servers
+## Today's Learning Objectives
 
-* [OSI vs TCP/IP Model](http://www.tcpipguide.com/free/diagrams/tcpiplayers.png)
-* [OSI Model](http://blog.buildingautomationmonthly.com/wp-content/uploads/2013/05/OSI-Model.png)
-
-## Learning Objectives
+* ChaiJS
 
 1. Write and run and TCP server with Node.js
 2. Write and run a basic hello world HTTP server with Node.js
@@ -44,4 +41,16 @@ There are two labs today, and follow-ons to both labs tomorrow:
 
 * [TCP Chat Server](https://github.com/codefellows-portland-javascript-401d2/tcp-chat-server)
 * [HTTP Hello/Goodbye World](https://github.com/codefellows-portland-javascript-401d2/http-hello-goodbye-world)
+
+## Overview
+
+### Application Architecture
+	* Client _(browser, mobile, IoT)_
+	* Server _(Node.js)_
+	* Database _(MongoDB)_
+
+### Layers
+* [OSI vs TCP/IP Model](http://www.tcpipguide.com/free/diagrams/tcpiplayers.png)
+* [OSI Model](http://blog.buildingautomationmonthly.com/wp-content/uploads/2013/05/OSI-Model.png)
+
 
