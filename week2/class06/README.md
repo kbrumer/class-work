@@ -8,7 +8,7 @@
 	* Travis CI passed when I turned it on!
 	* Prima fascia looks really good
 	* Test First having positive impact
-* Pace:
+* Workload Pace:
 	* Okay?
 	* More reading first couple of weeks, then lightens up
 * Yes, I will try and slow down and pause more!
@@ -45,9 +45,9 @@ There are two labs today, and follow-ons to both labs tomorrow:
 ## Overview
 
 ### Application Architecture
-	* Client _(browser, mobile, IoT)_
-	* Server _(Node.js)_
-	* Database _(MongoDB)_
+* Client _(browser, mobile, IoT)_
+* Server _(Node.js)_
+* Database _(MongoDB)_
 
 ### Layers
 * [OSI vs TCP/IP Model](http://www.tcpipguide.com/free/diagrams/tcpiplayers.png)
