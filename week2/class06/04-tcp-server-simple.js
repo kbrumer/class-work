@@ -2,6 +2,7 @@ const net = require( 'net' );
 const fs = require( 'fs' );
 
 const log = fs.createWriteStream( 'server-log.txt' );
+
 // const server = new net.Server();
 // server.on( 'connection', socket => {
 // 	// same as below
