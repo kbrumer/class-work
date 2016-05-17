@@ -1,5 +1,10 @@
 # Class 07: Writing servers with Node.js
 
+## Using Travis CI
+
+* there to provide _you_ information
+* quick demo/review
+
 ## Review Bitmap Transformer
 
 * Thinking about modularity
