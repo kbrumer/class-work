@@ -1,4 +1,4 @@
-# Class 07: Writing servers with Node.js
+# Class 07: HTTP, Clients in Node.js, E2E testing with chai-http
 
 ## Using Travis CI
 
