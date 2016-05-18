@@ -10,7 +10,7 @@
 * follow-on assignments that meet requirements of previous assignments can be resubmitted
 
 ## Transform Streams
-	* Demo
+* Demo
 	
 ## Promises
-	* Bonus Pts in Assignment
+* Bonus Pts in Assignment
