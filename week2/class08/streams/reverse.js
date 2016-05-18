@@ -9,9 +9,10 @@ var transform = {
 		this.push( chunk.reverse() + '\n' );
 		next();
 	},
-	flush: function(done) {
-		done();
-	}
+	/* We can omit this because no work to be done */
+	// flush: function(done) {
+	// 	done();
+	// }
 };
 
 module.exports = function makeReverse() {
