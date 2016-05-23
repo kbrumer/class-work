@@ -14,5 +14,4 @@ app.get( '/pets', ( req, res ) => {
 	res.send( pets );
 });
 
-
 http.createServer( app ).listen( 8080 );
