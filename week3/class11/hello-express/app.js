@@ -2,28 +2,25 @@ const express = require( 'express' );
 const app = express();
 const http = require( 'http' );
 
+const pets = [
+	{ id: 1, type: 'cat', name: 'sylvia' },
+	{ id: 2, type: 'dog', name: 'boris' },
+	{ id: 3, type: 'cat', name: 'buttons' }
+];
 
-app.get( '/*', ( req, res ) => {
-	res.send( 'first handler' );
+app.get( '/pets', ( req, res ) => {
+	res.send( pets );
 });
 
-app.get( '/foo', ( req, res ) => {
-	res.send( 'foo handler' );
+app.get( '/users/:userId/pets/:petId/', ( req, res ) => {
+	const pet = pets.find( p => p.id == req.params.id );
+	if ( pet ) res.send( pet );
+	else res.status( 404 ).send( `no pet with id ${req.params.id}` );
 });
 
-app.get( '/', ( req, res ) => {
-	res.send( 'hello world' );
+app.get( '/data', ( req, res ) => {
+	res.send( req.query );
 });
 
-app.post( '/', ( req, res ) => {
-	var data = '';
-	req.on( 'data', chunk => data += chunk );
-	req.on( 'end', () => {
-		const body = data; //JSON.parse( data );
-		console.log( 'req data', body );
-		res.type( 'json' );
-		res.send( body );
-	});
-});
 
 http.createServer( app ).listen( 8080 );
