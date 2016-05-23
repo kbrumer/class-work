@@ -53,10 +53,13 @@ route matching, parameters, and order of routes
 
 * routing
 	* method based functions (`app.get`)
+	* response.send
 	* regex
 	* order
-	* parameters
+	* parameters (route and query)
+		* request
 	* `express.Router()`
 	* `app.use()`
 * static files
 * rendered views
+* express generator
