@@ -6,5 +6,28 @@
 </head>
 <body>
 	<h1>hello world</h1>
+	<main></main>
+	
+	<script id='template' type='text/html'>
+		<ul>
+			{{#each pets}}
+			<li>{{name}} the {{type}}</li>
+			{{/each}}
+		</ul>
+	</script>
+	
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/ractive/0.7.3/ractive.js'></script>
+	<script>
+		var ractive = new Ractive({
+			el: 'main',
+			template: '#template'
+		});
+		
+		fetch( '/pets' )
+			.then( r => r.json() )
+			.then( pets => {
+				ractive.set( 'pets', pets );
+			})
+	</script>
 </body>
 </html>
