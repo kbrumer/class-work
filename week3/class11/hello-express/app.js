@@ -1,6 +1,7 @@
 const express = require( 'express' );
 const app = express();
 const http = require( 'http' );
+const fs = require( 'fs' );
 
 const pets = [
 	{ id: 1, type: 'cat', name: 'sylvia' },
@@ -8,18 +9,17 @@ const pets = [
 	{ id: 3, type: 'cat', name: 'buttons' }
 ];
 
+app.use( ( req, res, next ) => {
+	const possibleFile = __dirname + '/public' + req.url;
+	console.log( possibleFile );
+	fs.stat( possibleFile, ( err, stats) => {
+		if( err ) next();
+		else res.sendFile( possibleFile );
+	});
+});
+
 app.get( '/pets', ( req, res ) => {
 	res.send( pets );
-});
-
-app.get( '/users/:userId/pets/:petId/', ( req, res ) => {
-	const pet = pets.find( p => p.id == req.params.id );
-	if ( pet ) res.send( pet );
-	else res.status( 404 ).send( `no pet with id ${req.params.id}` );
-});
-
-app.get( '/data', ( req, res ) => {
-	res.send( req.query );
 });
 
 
