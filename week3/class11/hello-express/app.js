@@ -8,10 +8,12 @@ const pets = [
 	{ id: 3, type: 'cat', name: 'buttons' }
 ];
 
+app.set( 'view engine', 'pug' );
+
 app.use( express.static( 'public' ) );
 
 app.get( '/pets', ( req, res ) => {
-	res.send( pets );
+	res.render( 'pets', { pets, message: 'hello pets!!!' } );
 });
 
 http.createServer( app ).listen( 8080 );

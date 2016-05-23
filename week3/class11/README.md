@@ -58,8 +58,11 @@ route matching, parameters, and order of routes
 	* order
 	* parameters (route and query)
 		* request
-	* `express.Router()`
 	* `app.use()`
 * static files
 * rendered views
-* express generator
+* project structure
+	* don't use one huge app.js file!
+	* views, routes, static
+	* express generator
+	* `express.Router()`
