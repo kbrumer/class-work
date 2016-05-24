@@ -1,0 +1,14 @@
+{
+  "name": "class12",
+  "version": "1.0.0",
+  "description": "## Reminders \t* Sign up for 1-on-1! \t* Error Handling in Async \t* Install MongoDB!",
+  "main": "async.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marty Nelson <marty@martypdx.com> (@martypdx)",
+  "license": "ISC",
+  "dependencies": {
+    "sander": "^0.5.1"
+  }
+}
