@@ -27,21 +27,15 @@ describe( 'isAuthed', () => {
 	
 	it( 'sends 403 on failure', () => {
 		const req = getMockReq( 'bad' );
-		const next = () => assert.fail();
-		const res = {
-			status( code ) { 
-				assert.equal( code, 403 ); 
-				return this; 
-			},
-			send( msg ) { 
-				assert.equal( msg, 'go away!' );
-				this.sent = true; 
-			}
+		var error;
+		const next = function( err ) {
+			error = err;
 		};
 		
-		isAuthed( req, res, next );
+		isAuthed( req, null, next );
 		
-		assert.ok( res.sent );
+		assert.equal( error.code, 403 );
+		assert.equal( error.error, 'Not Authorized' );
 	});
 	
 });
