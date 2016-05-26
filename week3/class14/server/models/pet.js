@@ -9,6 +9,11 @@ const petSchema = new Schema({
 	type: { 
 		type: String, 
 		default: 'bird' 
+	},
+	owner: {
+		required: true,
+		type: Schema.Types.ObjectId,
+		ref: 'User'
 	}
 });
 
