@@ -17,6 +17,10 @@ const petSchema = new Schema({
 	}
 });
 
-const petModel = mongoose.model( 'Pet', petSchema );
+petSchema.statics.query = function ( query, cb ) {
+	const validated = {};
+	if ( query.type ) validated.type = query.type;
+	return this.model('Pet').find( query, cb );
+};
 
-module.exports = petModel;
+module.exports = mongoose.model( 'Pet', petSchema );

@@ -8,11 +8,15 @@
 * Related Models
 	* ObjectId
 		* Prefer children referencing parent ids
+		* `.populate`
 	* Sub Documents
-	* `.populate`?
 * Augmenting Models with methods
 	* static
 	* instance
+	
+## mongodb perf
+
+* https://codeandcodes.com/2014/07/31/mongodb-performance-enhancements-and-tweaks/
 	
 ## How do I model my relationships
 

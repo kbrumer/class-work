@@ -24,7 +24,6 @@ Promise.all([
 
 
 // Toy.findById('5747341a46f079c411416aa2')
-// 	// .select( 'name pets' )
 // 	.populate( {
 // 		path: 'pet',
 // 		populate: { path: 'owner' } 

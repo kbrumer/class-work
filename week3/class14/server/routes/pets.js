@@ -6,9 +6,7 @@ var byId = ( req ) => ({_id: req.params.id});
 
 router
 	.get( '/', ( req, res ) => {
-		const query = req.query.type ? { type: req.query.type }  : {};
-		Pet.find( query ).select( 'name type' )
-			.select( 'name type' )
+		Pet.query( req.query ).select( 'name type' )
 			.lean()
 			.then( pets => res.json( pets ) );
 	})
