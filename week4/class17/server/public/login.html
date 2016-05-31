@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+</head>
+<body>
+	<h1>Sign in or up for Pets!</h1>
+	<form id="credentials" onsubmit="return false;">
+		<div>username: <input name="username"></div>
+		<div>password: <input name="password"></div>
+		<div>
+			<button onclick="login('signup')">sign up</button>
+			<button onclick="login('signin')">sign in</button>
+		</div>
+		<div id="error"></div>
+	</form>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/1.2.0/superagent.min.js"></script>
+	<script>
+		var request = superagent;
+		var form = document.getElementById( 'credentials' ).elements;
+		var error = document.getElementById( 'error' );
+		
+		function getCredentials(){
+			return {
+				username: form.username.value,
+				password: form.password.value
+			};
+		}
+		
+		
+		function login( type ){
+			error.textContent = '';
+			
+			const cred = getCredentials();
+			request.post( '/' + type )
+				.send(cred)
+				.end( ( err, res ) => {
+					if( !err && res.body && res.body.token ) {
+						localStorage.token = res.body.token;
+						window.location = '/';
+					}
+					else {
+						error.textContent = res.body ? res.body.reason : err;
+					}
+				});
+		}
+	</script>
+</body>
+</html>
