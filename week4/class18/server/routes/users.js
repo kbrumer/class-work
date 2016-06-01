@@ -1,13 +1,18 @@
 const router = require( 'express' ).Router();
-const bodyParser = require( 'body-parser' ).json();
 const User = require( '../models/user' );
+const twitter = require( '../lib/twitter' );
 
 router
+	.get( '/:userId/tweets', ( req, res, next ) => {
+		twitter.getTweets( req.user.id )
+			.then( tweets => res.json( tweets ) )
+			.catch( next );	
+	})
 	.post( '/:userId/roles/:role', ( req, res ) => {
 		User.findById( req.params.userId )
 			.then( user => {
 				if ( !user ){
-					throw new Error( 'no user by that id' );
+					throw { error: 'no user by that id' };
 				}
 				
 				const role = req.params.role;

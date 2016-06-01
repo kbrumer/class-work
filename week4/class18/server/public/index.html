@@ -15,6 +15,9 @@
 	
 	<h2>One Pet</h2>
 	<pre id="pet"></pre>
+	<a href='#' onclick='tweetAbout(); return false;'>
+		Tweet how much you love this pet!
+	</a>
 
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/1.2.0/superagent.min.js"></script>
@@ -38,6 +41,7 @@
 	</script>
 	
 	<script>
+		var petId = -1;
 		var output = document.getElementById( 'output' );
 		var pet = document.getElementById( 'pet' );
 		var request = superagent;
@@ -47,13 +51,24 @@
 			.end( ( err, res ) => {
 				output.textContent = JSON.stringify( res.body, true, 2 );
 				
+				petId = res.body[0]._id
 				request
-					.get( '/pets/' + res.body[0]._id )
+					.get( '/pets/' + petId )
 					.set( 'token', token )
 					.end( ( err, res ) => {
 						pet.textContent = JSON.stringify( res.body, true, 2 );
 					})
 			});
+			
+		function tweetAbout(){
+			request
+				.post( `/pets/${petId}/tweet` )
+				.set( 'token', token )
+				.end( ( err, res ) => {
+					if ( err ) console.log( err );
+					console.log( res.body );
+				})
+		}
 	</script>
 	
 </body>

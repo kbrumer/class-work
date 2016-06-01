@@ -13,8 +13,8 @@ module.exports = {
 //     ]
 //   },
 	twitter: {
-		key: process.env.TWITTER_CONSUMER_KEY || 'V58oeC6099knG8hD1KpO962HZ',
-		secret: process.env.TWITTER_CONSUMER_SECRET || 'jtu5MniFCSXpQpbi8AnNR78ocZ5HNa45ARfzdeMyAOGPrL7cjZ',
+		key: process.env.TWITTER_CONSUMER_KEY,
+		secret: process.env.TWITTER_CONSUMER_SECRET,
 		callback: '/auth/twitter/callback'
 	}
 };

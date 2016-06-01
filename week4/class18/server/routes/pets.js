@@ -1,6 +1,9 @@
 const router = require( 'express' ).Router();
 const bodyParser = require( 'body-parser' ).json();
 const Pet = require( '../models/pet' );
+const User = require( '../models/user' );
+
+const twitter = require( '../lib/twitter' );
 
 var byId = ( req ) => ({_id: req.params.id});
 
@@ -12,7 +15,21 @@ router
 	})
 	.get( '/:id', ( req, res ) => {
 		Pet.findById( req.params.id )
+			.lean()
 			.then( pets => res.json( pets ) );
+	})
+	.post( '/:id/tweet', ( req, res, next ) => {
+		Pet.findById( req.params.id )
+			.select( 'name type' )
+			.lean()
+			.then( pet => {
+				return twitter.postTweet( 
+					req.user.id, 
+					`hello from ${pet.name} the ${pet.type}` 
+				);
+			})
+			.then( tweet => res.json( tweet ) )
+			.catch( next );		
 	})
 	.delete( '/:id', ( req, res ) => {
 		Pet.findByIdAndRemove( req.params.id )

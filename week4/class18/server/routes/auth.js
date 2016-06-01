@@ -27,12 +27,6 @@ router.get( '/validate', ensureAuth, ( req, res ) => {
 	res.json({ valid: true });
 });
 
-const sendToken = ( token ) => `
-	<script>
-		window.localStorage.token='${token}';
-		window.location.assign('/');
-	</script>`;
-
 router.get( '/twitter/callback', ( req, res, next ) => {
 	
 	const profile = req.query;
@@ -76,7 +70,7 @@ router.post('/signin', jsonParser, ( req, res, next ) => {
 			return token.sign( user );
 		})
 		.then( token => res.json({ token }) )
-		.catch( err => next( err ) );
+		.catch( next );
 	
 });
 

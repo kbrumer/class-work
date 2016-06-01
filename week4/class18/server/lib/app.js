@@ -15,10 +15,9 @@ const Grant = require( 'grant-express' );
 const grantConfig = require( '../grant' );
 const grant = new Grant( grantConfig );
 const session = require( 'express-session' );
-const sekrit = require( './sekrit' );
 
 app.use( '/connect', session({ 
-	secret: sekrit, 
+	secret: process.env.APP_SECRET, 
 	resave: true, 
 	saveUninitialized: true,
 	// TODO only allow when NODE_ENV !== production
@@ -34,7 +33,7 @@ app.use( '/pets', ensureAuth, pets );
 app.use( '/users', ensureAuth, ensureRole( 'admin' ), users );
 
 app.use( ( err, req, res, next ) => {
-	console.dir( err );
+	console.error( err );
 	res
 		.status( err.code || 500 )
 		.json({ error: err.error || 'Server error' });
