@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome to pets</title>
+</head>
+<body>
+	<script>
+		var token = localStorage.token;
+		if ( !token ) window.location = 'login.html';
+	</script>
+	
+	
+	<h1>Welcome to Pets!</h1>
+	
+	<a href='login.html' onclick="localStorage.removeItem('token');">log out</a>
+	
+	<h2>Pets</h2>
+	<pre id="output"></pre>
+	
+	<h2>One Pet</h2>
+	<pre id="pet"></pre>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/1.2.0/superagent.min.js"></script>
+
+	<script>
+		var output = document.getElementById( 'output' );
+		var pet = document.getElementById( 'pet' );
+		var request = superagent;
+		request
+			.get( '/pets' )
+			.set( 'token', token )
+			.end( ( err, res ) => {
+				output.textContent = JSON.stringify( res.body, true, 2 );
+				
+				request
+					.get( '/pets/' + res.body[0]._id )
+					.set( 'token', token )
+					.end( ( err, res ) => {
+						pet.textContent = JSON.stringify( res.body, true, 2 );
+					})
+			});
+	</script>
+	
+</body>
+</html>
