@@ -5,15 +5,10 @@
 	<title>Welcome to pets</title>
 </head>
 <body>
-	<script>
-		var token = localStorage.token;
-		if ( !token ) window.location = 'login.html';
-	</script>
-	
 	
 	<h1>Welcome to Pets!</h1>
 	
-	<a href='login.html' onclick="localStorage.removeItem('token');">log out</a>
+	<a href='login.html' onclick="logout();">log out</a>
 	
 	<h2>Pets</h2>
 	<pre id="output"></pre>
@@ -21,8 +16,27 @@
 	<h2>One Pet</h2>
 	<pre id="pet"></pre>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/1.2.0/superagent.min.js"></script>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/1.2.0/superagent.min.js"></script>
+	<script>
+		function logout(){
+			localStorage.removeItem( 'token' );
+			window.location = 'login.html';
+		}
+		
+		var token = localStorage.token;
+		if ( !token ) logout();
+		else {
+			superagent
+				.get( '/auth/validate')
+				.set( 'token', token )
+				.end( function( err ) {
+					if ( err ) logout();
+				});
+		}
+			
+	</script>
+	
 	<script>
 		var output = document.getElementById( 'output' );
 		var pet = document.getElementById( 'pet' );

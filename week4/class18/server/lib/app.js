@@ -13,12 +13,11 @@ const public = path.join( __dirname, '../public' );
 
 const Grant = require( 'grant-express' );
 const grantConfig = require( '../grant' );
-console.log( grantConfig )
 const grant = new Grant( grantConfig );
 const session = require( 'express-session' );
 const sekrit = require( './sekrit' );
 
-app.use( session({ 
+app.use( '/connect', session({ 
 	secret: sekrit, 
 	resave: true, 
 	saveUninitialized: true,
@@ -35,8 +34,10 @@ app.use( '/pets', ensureAuth, pets );
 app.use( '/users', ensureAuth, ensureRole( 'admin' ), users );
 
 app.use( ( err, req, res, next ) => {
-	console.error( 'error:', err );
-	res.status( err.code || 500 ).json({ error: err.message || 'Server error' });
+	console.dir( err );
+	res
+		.status( err.code || 500 )
+		.json({ error: err.error || 'Server error' });
 });
 
 module.exports = app;

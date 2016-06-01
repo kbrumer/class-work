@@ -6,9 +6,16 @@
 </head>
 <body>
 	<h1>Sign in or up for Pets!</h1>
-	
+	<script>
+		var strWindowFeatures = "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes";
+
+		function popup(){
+			window.open('/connect/twitter', 'Yo twitter', strWindowFeatures);
+		}
+	</script>
 	<section>
 		<h2>Login using <a href='/connect/twitter'>Twitter</a><h2>
+		<!--<h2>Login using <a href='#' onclick="popup(); return false;">Twitter</a><h2>-->
 	</section>
 	
 	<section>
@@ -37,6 +44,8 @@
 			};
 		}
 		
+	
+		
 		
 		function login( type ){
 			error.textContent = '';
@@ -44,13 +53,13 @@
 			const cred = getCredentials();
 			request.post( '/auth/' + type )
 				.send(cred)
-				.end( ( err, res ) => {
+				.end( function( err, res ){
 					if( !err && res.body && res.body.token ) {
 						localStorage.token = res.body.token;
 						window.location = '/';
 					}
 					else {
-						error.textContent = res.body ? res.body.reason : err;
+						error.textContent = res.body ? res.body.error : err;
 					}
 				});
 		}

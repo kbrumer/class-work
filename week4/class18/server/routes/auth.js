@@ -2,16 +2,17 @@ const router = require( 'express' ).Router();
 const jsonParser = require( 'body-parser' ).json();
 const User = require( '../models/user' );
 const token = require( '../lib/token' );
+const ensureAuth = require( '../lib/ensureAuth' );
 
 router.post('/signup', jsonParser, ( req, res, next ) => {
 	const { username, password } = req.body;
 	delete req.body.password;
 	
-	if ( !username || !password ) return next({ code: 400, message: 'Invalid request. Username and Password required' });
+	if ( !username || !password ) return next({ code: 400, error: 'Invalid request. Username and Password required' });
 	
 	User.findOne({ username }).count()
 		.then( count => {
-			if ( count ) throw new Error({ code: 400, message: 'username already exists' });
+			if ( count ) throw { code: 400, error: 'username already exists' };
 			
 			const user = new User( req.body );
 			user.generateHash( password );
@@ -22,9 +23,12 @@ router.post('/signup', jsonParser, ( req, res, next ) => {
 		.catch( next );
 });
 
-const sendToken = ( token ) => String.raw`
+router.get( '/validate', ensureAuth, ( req, res ) => {
+	res.json({ valid: true });
+});
+
+const sendToken = ( token ) => `
 	<script>
-		debugger;
 		window.localStorage.token='${token}';
 		window.location.assign('/');
 	</script>`;
@@ -45,11 +49,18 @@ router.get( '/twitter/callback', ( req, res, next ) => {
 			}).save();
 		})
 		.then( user => token.sign( user ) )
+		// this is browser page request, not an ajax callback
+		// so we don't want to send a json response:
 		// .then( token => res.json({ token }) )
-		.then( token => {
-			// send back html response to redirect client
-			res.send( sendToken( token ) );
-		})
+		
+		// instead send back html response with <script>
+		// to set token in local storage and redirect client
+		.then( token => res.send(
+			`<script>
+				window.localStorage.token='${token}';
+				window.location.assign('/');
+			 </script>`
+		))
 		.catch( next );
 });
 
@@ -59,26 +70,13 @@ router.post('/signin', jsonParser, ( req, res, next ) => {
 	
 	User.findOne({ username })
 		.then( user => {
-			
-			if ( !user ) {
-				return res.status(400).json({
-					msg: 'authentication sez no!',
-					reason: 'no user ' + username
-				});
+			if ( !user || !user.compareHash( password ) ) {
+				throw { code: 400, error: 'invalid credentials' };
 			}
-			
-			if ( !user.compareHash( password ) ) {
-				return res.status(400).json({
-					msg: 'authentication sez no!',
-					reason: 'password doesn\'t match!'
-				});
-			}
-			
-			token.sign( user ).then( token => res.json({ token }) );
+			return token.sign( user );
 		})
-		.catch( err => {
-			next({ message: err });
-		});
+		.then( token => res.json({ token }) )
+		.catch( err => next( err ) );
 	
 });
 

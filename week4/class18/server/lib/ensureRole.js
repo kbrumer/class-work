@@ -5,9 +5,7 @@ module.exports = function ensureRole( role ) {
 			next();
 		}
 		else {
-			res.status(403).json({
-				msg: 'not authorized'
-			});
+			next({ code: 403, error: 'not authorized' });
 		}
 	};
 	

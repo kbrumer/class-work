@@ -6,9 +6,7 @@ module.exports = function ensureAuth( req, res, next ) {
 	//TODO: make query work
 		
 	if ( !token ) {
-		return res.status(403).json({
-			error: 'no token provided'
-		});
+		return next({ code: 403, error: 'no token provided' });
 	}
 	
 	tokenChecker.verify( token )
@@ -17,9 +15,7 @@ module.exports = function ensureAuth( req, res, next ) {
 			next();
 		})
 		.catch( () => {
-			res.status(403).json({
-				error: 'invalid token'
-			});
+			next({ code: 403, error: 'invalid token' });
 		});
 	
 };
