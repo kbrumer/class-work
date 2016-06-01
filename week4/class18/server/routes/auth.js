@@ -47,6 +47,7 @@ router.get( '/twitter/callback', ( req, res, next ) => {
 		.then( user => token.sign( user ) )
 		// .then( token => res.json({ token }) )
 		.then( token => {
+			// send back html response to redirect client
 			res.send( sendToken( token ) );
 		})
 		.catch( next );
