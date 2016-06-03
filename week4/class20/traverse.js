@@ -46,4 +46,20 @@ function breadth( tree ) {
 	});
 }
 
-breadth( tree );
+
+function breadth2( tree ) {
+	
+	let next = [ tree ], children = null;
+	
+	while( next.length ) {
+		children = next;
+		next = [];
+		children.forEach( node => {
+			console.log( node.value );
+			next = next.concat( node.children );
+		});
+	}
+}
+
+// breadth( tree );
+breadth2( tree );
