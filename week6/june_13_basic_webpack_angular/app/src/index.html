@@ -7,9 +7,16 @@
 <body ng-app="app">
 	<h1>hello webpack</h1>
 	<div ng-controller="main">
-		<input ng-model="place">
-		<br>
-		{{greeting( place )}}
+		<label>
+			<input type="radio" ng-model="method" value="say">
+			Say
+		</label>
+		<label>
+			<input type="radio" ng-model="method" value="think">
+			Think
+		</label>
+		<label>: <input ng-model="text"></label>
+		<pre>{{cow( method, text)}}</pre>
 	</div>
 </body>
 </html>
