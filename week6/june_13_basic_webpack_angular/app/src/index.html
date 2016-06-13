@@ -7,6 +7,7 @@
 <body ng-app="app">
 	<h1>hello webpack</h1>
 	<div ng-controller="main">
+		<select ng-model="type" ng-options="type for type in types"></select>
 		<label>
 			<input type="radio" ng-model="method" value="say">
 			Say
@@ -16,7 +17,7 @@
 			Think
 		</label>
 		<label>: <input ng-model="text"></label>
-		<pre>{{cow( method, text)}}</pre>
+		<pre>{{cow( method, type, text)}}</pre>
 	</div>
 </body>
 </html>
