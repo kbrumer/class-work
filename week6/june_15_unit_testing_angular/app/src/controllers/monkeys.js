@@ -1,4 +1,4 @@
-monkeys.$inject = [ '$scope', '$http' ];
+monkeys.$inject = [ '$scope', '$http', 'reverseFilter' ];
 
 export default function monkeys( $scope, $http ) {
 	$http

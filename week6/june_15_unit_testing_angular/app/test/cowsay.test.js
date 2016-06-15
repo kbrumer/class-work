@@ -4,11 +4,11 @@ const assert = chai.assert;
 
 describe( 'cowsay', () => {
 
-	beforeEach( angular.mock.module( 'app' ) );
-	
+	angular.mock.module.sharedInjector();
+	before( angular.mock.module( 'controllers' ) );
+
 	var $controller, $scope;
-	
-	beforeEach( angular.mock.inject( function( $rootScope, _$controller_ ) {
+	before( angular.mock.inject( function( $rootScope, _$controller_ ) {
 		$rootScope.foo = 'FOO';
 		$scope = $rootScope.$new();
 		$controller = _$controller_;
@@ -16,7 +16,7 @@ describe( 'cowsay', () => {
 
 	describe( 'initial values and defaults', () => {
 
-		beforeEach( () => {
+		before( () => {
 			$controller( 'cowsay', { $scope, $http: 'barrel full of monkeys' } );
 		});
 

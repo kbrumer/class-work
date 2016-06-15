@@ -45,7 +45,7 @@
 			{{ search }}
 			<ol>
 				<li ng-repeat="monkey in monkeys | filter: search">
-					{{ monkey.name }} the {{ getType(monkey.type) | uppercase }} 
+					{{ monkey.name }} the {{ getType(monkey.type) | reverse | uppercase }} 
 					<span ng-if='monkey.type === 3'>FTW!</span>
 				</li>
 			</ol>
