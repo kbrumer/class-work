@@ -2,16 +2,15 @@
 <input type="checkbox" ng-model="isFooish">
 <div hello-world="isFooish">hello world!</div>
 
-<div ng-controller="app as app">
-
+<div ng-controller="main as main">
+	<simple></simple>
 	<select ng-init="color = 'darksalmon'" ng-model="color" >
 		<option value="darksalmon">dark</option>
 		<option value="yellow">light</option>
 		<option value="lightsteelblue">regular</option>
 	</select>
 	
-	<span>{{app.counter}}</span>
+	<span>{{main.counter}}</span>
 
-	<simple shade="color" on-click="app.increment()">
-
+	<parent></parent>
 </div>

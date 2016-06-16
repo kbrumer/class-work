@@ -1,7 +1,9 @@
 import angular from 'angular';
-import simple from './simple/simple';
+import parent from './parent/parent';
+import child from './child/child';
 
 const components = angular.module( 'components', [] )
-	.directive( 'simple', simple );
+	.component( 'parent', parent )
+	.component( 'child', child );
 
 export default components.name;

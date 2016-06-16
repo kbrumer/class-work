@@ -7,10 +7,23 @@ const app = angular.module( 'app', [
 	components
 ]);
 
-app.controller( 'app', function(){
+app.controller( 'main', function(){
 	this.counter = 0;
-	this.increment = () => {
-		this.counter++;
+	this.increment = value => {
+		this.counter += value || 0;
+	};
+});
+
+app.directive('taskItem', function() {
+	return {
+		restrict: 'E',
+		require: '^main',
+		replace: true,
+		controller: function() {
+			this.$onInit = function(){
+				this.parent.foo();
+			};
+		}
 	};
 });
 
