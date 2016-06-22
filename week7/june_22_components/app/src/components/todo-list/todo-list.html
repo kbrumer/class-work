@@ -1,0 +1,15 @@
+<section>
+	<h4>Todo List for {{list.app.user}}</h4>
+	<ul>
+		<li ng-repeat="todo in list.todos track by todo.id">
+			<todo-item 
+				task="todo.task" 
+				done="todo.done"
+				remove="list.remove($index)">
+			</todo-item>
+		</li>
+	</ul>
+	<add-new-todo add="list.add(task)"></add-new-todo>
+	<!--<add-new-todo></add-new-todo>-->
+
+
