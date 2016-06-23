@@ -4,8 +4,8 @@ import path from 'path';
 
 const reqContext = require.context(
 	'./', //this directory
-	true, //subdirectories
-	/^\.\/(?!index).+?\.js$/ //regex match
+	true, //include subdirectories
+	/^\.\/(?!index).+?\.js$/ //regex match any .js except this one
 );
 
 const components = angular.module( 'components', [] );
