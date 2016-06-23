@@ -26,10 +26,6 @@ module.exports = {
 			}
 		},
 		{
-			test: /\.css$/,
-			loader: 'style!css'	
-		},
-		{
 			test: /\.scss$/,
 			loader: 'style!css?sourceMap!sass?sourceMap'	
 		},
