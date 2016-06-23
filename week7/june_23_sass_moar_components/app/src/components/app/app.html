@@ -1,0 +1,13 @@
+<header>
+	<h2>My Todo App</h2>
+	current username: <input ng-model="app.user">
+	<foo></foo>
+</header>
+
+<main>
+	<todo-list todos="app.todos"></todo-list>
+</main>
+
+<footer>
+	{{ app.todos | json }}
+</footer>
