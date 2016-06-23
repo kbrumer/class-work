@@ -3,7 +3,7 @@ import camelcase from 'camelcase';
 import path from 'path';
 
 const reqContext = require.context(
-	'./', //directory
+	'./', //this directory
 	true, //subdirectories
 	/^\.\/(?!index).+?\.js$/ //regex match
 );
