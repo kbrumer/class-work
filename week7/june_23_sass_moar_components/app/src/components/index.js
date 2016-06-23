@@ -3,9 +3,9 @@ import camelcase from 'camelcase';
 import path from 'path';
 
 const reqContext = require.context(
-	'./', 
-	true, 
-	/^\.\/(?!index).+?\.js$/
+	'./', //directory
+	true, //subdirectories
+	/^\.\/(?!index).+?\.js$/ //regex match
 );
 
 const components = angular.module( 'components', [] );
