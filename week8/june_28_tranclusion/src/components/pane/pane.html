@@ -1,0 +1,17 @@
+<section ng-class="$ctrl.styles.pane" ng-style="{ border: '2px solid ' + $ctrl.color }">
+	<header>
+		<div ng-transclude="header">
+			default header
+		</div>
+	</header>
+
+	<div ng-transclude="main">
+		default content
+	</div>
+	
+	<footer>
+		<div ng-transclude="footer">
+			default footer
+		</div>
+	</footer>
+</section>
