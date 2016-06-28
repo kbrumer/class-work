@@ -1,0 +1,14 @@
+<app-header>
+	<user user="app.user"></user>
+</app-header>
+
+<main>
+	<!--<todos list-id="app.listId" obj="app.obj"></todos>-->
+	<div ui-view>
+		Loading...
+	</div>
+</main>
+
+<footer>
+	{{ app.todos | json }}
+</footer>

@@ -1,0 +1,8 @@
+<section ng-class="[ todo.styles.todo, { done: todo.done } ]">
+	<input type="checkbox" ng-model="todo.done">
+	<span>{{todo.task}}</span>
+	<input ng-model="todo.task">
+	<footer>
+		<button ng-click="todo.remove()">X</button>
+	</footer>
+</section>

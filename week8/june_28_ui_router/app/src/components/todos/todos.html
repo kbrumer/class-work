@@ -1,0 +1,15 @@
+<section>
+	<h4></h4>
+	<ul>
+		<li ng-repeat="todo in $ctrl.todos">
+			<todo-item 
+				task="todo.task" 
+				done="todo.done"
+				remove="$ctrl.remove(todo.id, $index)">
+			</todo-item>
+		</li>
+	</ul>
+	<add-new-todo add="$ctrl.add(task)"></add-new-todo>
+	<!--<add-new-todo></add-new-todo>-->
+	<section ng-if="error">{{error}}</section>
+</section>
