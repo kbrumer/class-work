@@ -7,9 +7,7 @@ describe( 'directive', () => {
 	let $httpBackend = null, itemService = null;
 
 	beforeEach( 
-		angular.mock.module( 'services', $provide => {
-			$provide.value( 'apiUrl', '/api' );
-		}) 
+		angular.mock.module( 'services', { apiUrl: '/api' })
 	);
 
 	beforeEach( angular.mock.inject( ( _itemService_, _$httpBackend_ ) => {

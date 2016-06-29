@@ -9,9 +9,7 @@ describe( 'directive', () => {
 
 	angular.mock.module.sharedInjector();
 	before(
-		angular.mock.module( 'components', $provide => {
-			$provide.value( 'itemService', itemSvc );
-		})
+		angular.mock.module( 'components', { itemService: itemSvc })
 	);
 
 	let $component;
