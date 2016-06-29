@@ -5,7 +5,7 @@ import './scss/main.scss';
 
 app.config( routes );
 
-app.value( 'apiUrl', 'http://localhost:3000/api' );
+app.value( 'apiUrl', process.env.API_URL );
 
 angular.bootstrap( document, [ app.name ] );
 

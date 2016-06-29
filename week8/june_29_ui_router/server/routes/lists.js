@@ -1,6 +1,7 @@
 const router = require( 'express' ).Router();
 const jsonBody = require( 'body-parser' ).json();
 const List = require( '../models/List' );
+const Item = require( '../models/Item' );
 const items = require( './items' );
 
 router
@@ -10,8 +11,17 @@ router
 			.catch( next );
 	})
 	.get( '/:id', ( req, res, next ) => {
-		List.findById( req.params.id )
-			.then( list => res.send( list ) )
+		const id = req.params.id;
+		Promise
+			.all([
+				List.findById( id ),
+				Item.find({ list: id })
+			])
+			.then( ([ list, items ]) => {
+				list = list.toJSON();
+				list.items = items;
+				res.send( list );
+			})
 			.catch( next );
 	})
 	.post( '/', jsonBody, ( req, res, next ) => {

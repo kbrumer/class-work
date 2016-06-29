@@ -1,0 +1,17 @@
+<section ng-class="[ todo.styles.todo, { done: todo.done } ]"
+		 ng-init="todo.editing = false"
+		 ng-click="todo.editing = !todo.editing">
+
+	<div class="edit" ng-if="todo.editing" ng-click="$event.stopPropagation()">
+		<input ng-model="todo.done" type="checkbox">
+		<input ng-model="todo.task" 
+			   ng-blur="todo.change()"
+			   ng-keydown="$event.which === 13 && todo.change()">
+		<button ng-click="todo.remove()">X</button>
+	</div>
+		   
+	<span class="view" ng-if="!todo.editing">
+		{{todo.task}}
+	</span>
+	
+</section>

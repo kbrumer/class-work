@@ -12,18 +12,11 @@ export default function configRoutes( $stateProvider, $urlRouterProvider ) {
 			component: 'lists'
 		})
 		.state( 'list', {
-			url: '/:listId',
+			url: '/todos/:listId',
 			resolve: {
-				listId: [ 
-					'$stateParams', 
-					$stateParams => $stateParams.listId 
-				]
+				listId: [ '$stateParams', p => p.listId ]
 			},
 			component: 'todos'
-		})
-		.state( 'account', {
-			url: '/account',
-			template: '<p>this is your account</p>'
 		});
 
 	$urlRouterProvider.otherwise( '/' );

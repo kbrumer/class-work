@@ -15,6 +15,11 @@ export default function itemService( $http, apiUrl ) {
 				.post( `${apiUrl}/todos/${listId}/items`, item )
 				.then( r => r.data );
 		},
+		update( listId, item ) {
+			return $http
+				.put( `${apiUrl}/todos/${listId}/items/${item.id}`, item )
+				.then( r => r.data );
+		},
 		remove( listId, id ) {
 			return $http
 				.delete( `${apiUrl}/todos/${listId}/items/${id}` )

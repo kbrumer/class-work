@@ -19,6 +19,17 @@ router
 			.then( item => res.send( item ) )
 			.catch( next );
 	})
+	.put( '/:id', jsonBody, ( req, res, next ) => {
+		const { task, done } = req.body;
+		Item.findById( req.params.id )
+			.then( item => {
+				item.task = task;
+				item.done = done;
+				return item.save();
+			})
+			.then( item => res.send( item ) )
+			.catch( next );
+	})
 	.delete( '/:id', ( req, res, next ) => {
 		Item.findByIdAndRemove( req.params.id )
 			.then( item => res.send( item ) )

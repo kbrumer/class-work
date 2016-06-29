@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
-// const webpack = require( 'webpack' );
+const EnvironmentPlugin = require( 'webpack' ).EnvironmentPlugin;
+
 
 module.exports = {
 	entry: './src/main.js',
@@ -11,10 +12,8 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: './src/index.html'
-		})
-		// new webpack.DefinePlugin({
-		// 	API_URL: JSON.stringify( 'http://localhost:3000/api' )
-		// })
+		}),
+		new EnvironmentPlugin([ 'API_URL' ])
 	],
 	module: {
 		preLoaders: [{

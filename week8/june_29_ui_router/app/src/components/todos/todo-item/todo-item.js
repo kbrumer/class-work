@@ -7,9 +7,15 @@ export default {
 	bindings: {
 		task: '=',
 		done: '=',
+		update: '&',
 		remove: '&'
 	},
 	controller: function(){
 		this.styles = styles;
+
+		this.change = () => {
+			this.editing = false;
+			this.update();
+		};
 	}
 };
