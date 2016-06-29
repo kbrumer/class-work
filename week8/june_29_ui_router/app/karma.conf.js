@@ -4,7 +4,7 @@ const webpackConfig = require( './webpack.config' );
 
 webpackConfig.entry = {};
 
-const testEntry = './src/js/todo-app.js';
+const testEntry = './src/todo-app.js';
 
 module.exports = function(config) {
 	config.set({

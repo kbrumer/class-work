@@ -39,7 +39,6 @@ function controller( itemService ) {
 		return itemService.add( this.listId, todo )
 			.then( item => {
 				this.todos.push( item ); 
-				this.error = '';
 			})
 			.catch( err => console.log( err ) );
 	};
