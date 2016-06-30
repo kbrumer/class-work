@@ -15,18 +15,21 @@ export default function configRoutes( $stateProvider, $urlRouterProvider ) {
 			}
 		})
 		.state( 'account', {
-			url: '/account',
+			url: '/account?display',			
+			resolve: {
+				display: [ '$stateParams', p => p.display || 'list' ]
+			},
 			views: {
+				header: {
+					component: 'displayHeader'
+				},
 				main: {
-					template: '<p>your account is overdue by $0, please pay immediately</p>'
+					component: 'account'
 				}
 			}
 		})
 		.state( 'lists', {
-			url: '/todos?display',
-			resolve: {
-				display: [ '$stateParams', p => p.display ]
-			},
+			url: '/todos',
 			views: {
 				main: {
 					component: 'lists'
@@ -35,13 +38,14 @@ export default function configRoutes( $stateProvider, $urlRouterProvider ) {
 		})
 		.state( 'list', {
 			url: '/todos/:listId?display',
+			params: { display: { dynamic: true } },
 			resolve: {
 				todoList: [ 'listService', '$stateParams', ( list, p ) => list.get( p.listId ) ],
-				display: [ '$stateParams', p => p.display ]
+				display: [ '$stateParams', p => p.display || 'list' ]
 			},
 			views: {
 				header: {
-					component: 'todoListHeader'
+					component: 'displayHeader'
 				},
 				main: {
 					component: 'todoList'

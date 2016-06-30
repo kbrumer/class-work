@@ -1,4 +1,5 @@
 import template from './todo-list.html';
+import styles from './todo-list.scss';
 
 export default {
 	template,
@@ -12,6 +13,12 @@ export default {
 controller.$inject = [ 'itemService', 'listService' ];
 
 function controller( itemService, listService ) {
+	this.styles = styles;
+	
+	this.uiOnParamsChanged = params => {
+		this.display = params.display;
+	};
+
 	this.todos = this.todoList.items;
 
 	this.updateName = () => {

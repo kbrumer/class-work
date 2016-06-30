@@ -1,11 +1,13 @@
-<section>
+<section ng-class="$ctrl.styles.list">
 	<h4>
 		<editable text="$ctrl.todoList.name"
-			          changed="$ctrl.updateName()">
+			      changed="$ctrl.updateName()">
 		</editable>
-		{{ $ctrl.display }}
+		
 	</h4>
 	
+	<p>display: {{ $ctrl.display }}</p>
+
 	<ul>
 		<li ng-repeat="todo in $ctrl.todos">
 			<todo-item 
