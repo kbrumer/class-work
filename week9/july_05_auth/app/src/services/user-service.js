@@ -1,12 +1,37 @@
-userService.$inject = [ '$window' ];
+userService.$inject = [ 'tokenService', '$http', 'apiUrl' ];
 
-const TOKEN_NAME = 'token';
+export default function userService( token, $http, apiUrl ) {
 
-export default function userService( $window ) {
+	const current = token.get();
+	if ( current ) {
+		$http.get( `${apiUrl}/verify` )
+			.catch( () => token.remove() );
+	}
 
 	return {
 		isAuthenticated() {
-			return !!$window.localStorage.getItem( TOKEN_NAME );
+			return !!token.get();
+		},
+		logout() {
+			token.remove();
+		},
+		signin( credentials ) {
+			return $http.post( `${apiUrl}/signin`, credentials )
+				.then( result => {
+					token.set( result.data.token );
+				})
+				.catch( err => {
+					throw err.data; 
+				});
+		},
+		signup( credentials ) {
+			return $http.post( `${apiUrl}/signup`, credentials )
+				.then( result => {
+					token.set( result.data.token );
+				})
+				.catch( err => {
+					throw err.data; 
+				});
 		}
 	};
 }

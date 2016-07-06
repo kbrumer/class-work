@@ -12,7 +12,6 @@ const services = angular.module( 'services', [] );
 
 reqContext.keys().forEach( key => {
 	let name = camelcase( path.basename( key, '.js' ) );
-	if ( name === 'userService' ) name = 'UserService';
 	services.factory( name, reqContext( key ).default );
 });
 

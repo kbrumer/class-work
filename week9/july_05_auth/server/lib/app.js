@@ -7,7 +7,7 @@ const ensureAuth = require( './ensureAuth' );
 
 app.use( express.static( __dirname + '/public' ) );
 app.use( cors );
-app.use( '/', auth );
+app.use( '/api', auth );
 app.use( '/api/todos', ensureAuth, lists );
 
 module.exports = app;

@@ -2,6 +2,7 @@ const router = require( 'express' ).Router();
 const jsonParser = require( 'body-parser' ).json();
 const User = require( '../models/user' );
 const token = require( '../lib/token' );
+const ensureAuth = require( '../lib/ensureAuth' );
 
 router.post('/signup', jsonParser, ( req, res ) => {
 	const { username, password } = req.body;
@@ -67,6 +68,10 @@ router.post('/signin', jsonParser, ( req, res ) => {
 			});
 		});
 	
+});
+
+router.get('/verify', ensureAuth, ( req, res ) => {
+	res.status( 200 ).send( { success: true } );
 });
 
 module.exports = router;

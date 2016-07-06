@@ -8,7 +8,6 @@ import './scss/main.scss';
 app.config( http );
 app.config( routes );
 app.value( 'apiUrl', process.env.API_URL );
-
 app.run( auth );
 
 angular.bootstrap( document, [ app.name ] );

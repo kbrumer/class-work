@@ -11,7 +11,10 @@ export default function configRoutes( $stateProvider, $urlRouterProvider ) {
 					component: 'homeHeader'
 				},
 				main: {
-					template: '<p>welcome to our todo app</p>'
+					template: `
+						<p>welcome to our todo app</p>
+						<p><a ui-sref="lists">Click to get started</a></p>
+					`
 				}
 			}
 		})

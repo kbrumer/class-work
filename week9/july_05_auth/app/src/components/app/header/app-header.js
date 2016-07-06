@@ -5,7 +5,12 @@ import styles from './app-header.scss';
 export default {
 	template,
 	transclude: true,
-	controller() {
-		this.styles = styles;
-	}
+	controller
 };
+
+controller.$inject = [ 'userService' ];
+
+function controller( userService ) {
+	this.styles = styles;
+	this.logout = () => userService.logout();
+}
