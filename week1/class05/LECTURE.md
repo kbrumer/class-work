@@ -1,5 +1,9 @@
 # Class 10 Lecture: Stacks and Queues
 
+* Introduction
+	* 	Ken Brumer (ken@codefellows.org)
+	*  Lead Instructor for 301 nights
+
 * Review whiteboard skills
    * mind-map
    * grading rubric (again)
@@ -16,7 +20,7 @@
        * Enqueue, dequeue, hasNext
 
 ## Lecture
-- Review arrays briefly as data structures
+- Review arrays briefly as data structures. [source](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 - Introduce Stack and explain, do a simple live code example. Maybe do a Stack class
 - Review whiteboard material: mindmap lays out “steps”, rubric lays out “skills”
 - Have students pair up and choose someone to go first and do first problem
@@ -31,6 +35,7 @@
 ```
 cd my-demo
 npm install
+npm run dev
 ```       
        
 ## Whiteboard Problems
