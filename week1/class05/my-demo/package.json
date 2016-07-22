@@ -1,0 +1,23 @@
+{
+  "name": "my-project",
+  "version": "0.0.1",
+  "description": "a sweet project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp",
+    "test": "gulp test",
+    "lint": "gulp lint"
+  },
+  "author": "Marty Nelson <marty@martypdx.com> (@martypdx)",
+  "license": "ISC",
+  "dependencies": {
+    "cool-ascii-faces": "^1.3.4"
+  },
+  "devDependencies": {
+    "eslint": "^2.9.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "mocha": "^2.4.5"
+  }
+}
